@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+import static cn.liangzai.config.RabbitmqConfig.ARTICLE_DIRECT_ROUTE;
 import static cn.liangzai.config.RabbitmqConfig.EXCHANGE_NAME;
 
 /***
@@ -52,8 +53,9 @@ public class loginServiceImpl implements loginService {
         map.put("token", jwt);
 
 //记录日志
-        rabbitTemplate.convertAndSend(EXCHANGE_NAME, username);
+        rabbitTemplate.convertAndSend(EXCHANGE_NAME, ARTICLE_DIRECT_ROUTE, username);
 //        logMapper.insert(new Log(null, username, new Date()));
+        System.out.println("hhhh");
 
         return map;
     }
