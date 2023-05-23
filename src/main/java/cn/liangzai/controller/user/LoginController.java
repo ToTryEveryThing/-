@@ -5,9 +5,7 @@ import com.alibaba.fastjson2.JSONB;
 import com.alibaba.fastjson2.JSONObject;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /***
  * @author 睡醒继续做梦
@@ -26,9 +24,11 @@ public class LoginController {
     private loginServiceImpl loginService;
 
     @ApiOperation("登录")
-    @GetMapping("/user/login/")
+    @PostMapping("/user/login/")
     public JSONObject login(@RequestParam String name,
                             @RequestParam String password){
+
+        System.out.println("hhhhhhhhhhhhhhhhh");
         return loginService.login(name, password);
     }
 

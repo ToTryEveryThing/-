@@ -40,18 +40,15 @@ public class loginServiceImpl implements loginService {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
 
+        System.out.println("jinlaile ");
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);  // 登录失败，会自动处理
         UserDetailsImpl loginUser = (UserDetailsImpl) authenticate.getPrincipal();
         user user = loginUser.getUser();
         String jwt = JwtUtil.createJWT(user.getName().toString());
-
-
         JSONObject map = new JSONObject();
-
-
-        map.put("error_message", "success");
+        System.out.println("拿到了 ");
+        map.put("message", "success");
         map.put("token", jwt);
-
 //记录日志
         rabbitTemplate.convertAndSend(EXCHANGE_NAME, ARTICLE_DIRECT_ROUTE, username);
 //        logMapper.insert(new Log(null, username, new Date()));

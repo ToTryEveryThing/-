@@ -34,9 +34,7 @@ public class PlayServiceImpl implements PlayService{
 
     @Override
     public JSONObject Select() {
-
         List<Object> allValuesFromHash = getAllValuesFromHash(REDIS_PLAY);
-        System.out.println(allValuesFromHash);
         JSONObject res = new JSONObject();
         res.put("message", "success");
         res.put("data", allValuesFromHash);
@@ -45,6 +43,7 @@ public class PlayServiceImpl implements PlayService{
 
     @Override
     public JSONObject Update(Play play) {
+        System.out.println(play);
         JSONObject res = new JSONObject();
         int i = playMapper.updateById(play);
         if(i>=1)
@@ -57,7 +56,7 @@ public class PlayServiceImpl implements PlayService{
     }
 
     @Override
-    public JSONObject Delete(Integer id) {
+    public JSONObject Delete(String id) {
         JSONObject res = new JSONObject();
         int i = playMapper.deleteById(id);
         if(i>=1)

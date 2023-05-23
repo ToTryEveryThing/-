@@ -16,7 +16,7 @@ public interface PlayService {
 
     JSONObject Update(Play play);
 
-    JSONObject Delete(Integer id);
+    JSONObject Delete(String id);
 
     JSONObject Add(Play play);
 }

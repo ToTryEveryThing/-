@@ -39,7 +39,7 @@ public class PlayController {
 
     @ApiOperation("删除演出")
     @DeleteMapping("/play/delete/")
-    public JSONObject delete(Integer id){
+    public JSONObject delete(String id){
         return playService.Delete(id);
     }
 

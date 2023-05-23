@@ -4,9 +4,7 @@ import cn.liangzai.service.impl.registerServiceImpl;
 import com.alibaba.fastjson2.JSONObject;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /***
  * @author 睡醒继续做梦
@@ -26,7 +24,7 @@ public class RegisterController {
 
 
     @ApiOperation("注册")
-    @GetMapping("/user/register/")
+    @PostMapping("/user/register/")
     public JSONObject reigster(@RequestParam String name,
                                @RequestParam String password){
         return register.register(name, password);
