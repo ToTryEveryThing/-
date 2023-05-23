@@ -5,7 +5,6 @@ import cn.liangzai.pojo.user;
 import cn.liangzai.service.utils.UserDetailsImpl;
 import cn.liangzai.utils.JwtUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.sun.istack.internal.NotNull;
 import io.jsonwebtoken.Claims;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class filter extends OncePerRequestFilter {
 
     @SneakyThrows
     @Override
-    protected void doFilterInternal(HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,  HttpServletResponse response,  FilterChain filterChain) throws ServletException, IOException {
         String token = request.getHeader("Authorization");
 //        判断为空
         if (!StringUtils.hasText(token) || !token.startsWith("Bearer ")) {

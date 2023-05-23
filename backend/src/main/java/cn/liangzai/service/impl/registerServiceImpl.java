@@ -30,14 +30,20 @@ public class registerServiceImpl implements registerService {
     @Override
     public JSONObject register(String username, String password) {
 
+        JSONObject res = new JSONObject();
         QueryWrapper<user> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("name", username);
         List<user> users = userMapper.selectList(queryWrapper);
-
+        System.out.println(users);
+        if(users.size() != 0){
+            System.out.println("用户名存在");
+            res.put("message", "用户名存在");
+            return res;
+        }
         String encodedPassword = passwordEncoder.encode(password);
         user user = new user(null, username, encodedPassword);
         userMapper.insert(user);
-        JSONObject res = new JSONObject();
+
         res.put("message", "success");
 
         return res;
